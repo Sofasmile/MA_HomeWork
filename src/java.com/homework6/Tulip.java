@@ -1,13 +1,14 @@
 package homework6;
 
 public class Tulip extends Flower {
-    private final int price = 45;
+    public static final int PRICE = 45;
 
     public Tulip() {
-        super.price = this.price;
+        super();
     }
 
-    public void name() {
-        System.out.println("tulip");
+    @Override
+    public String name() {
+        return "tulip";
     }
 }

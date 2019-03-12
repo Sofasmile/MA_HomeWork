@@ -1,10 +1,10 @@
-package homework6;
+package homework6.com.flower.kyiv;
 
 public class Chamomile extends Flower {
     public static final int PRICE = 70;
 
     public Chamomile() {
-        super();
+        super(PRICE);
     }
 
     @Override

@@ -1,7 +1,7 @@
-package homework6.com.flower.kyiv;
+package com.flower.kyiv.entity;
 
 public class Chamomile extends Flower {
-    public static final int PRICE = 70;
+    private static final int PRICE = 70;
 
     public Chamomile() {
         super(PRICE);

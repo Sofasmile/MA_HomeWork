@@ -1,9 +1,11 @@
-package homework6.service;
+package com.flower.kyiv.service;
 
-import homework6.com.flower.kyiv.Chamomile;
-import homework6.com.flower.kyiv.Flower;
-import homework6.com.flower.kyiv.Rose;
-import homework6.com.flower.kyiv.Tulip;
+import com.flower.kyiv.entity.Chamomile;
+import com.flower.kyiv.entity.Tulip;
+import com.flower.kyiv.entity.Flower;
+import com.flower.kyiv.entity.Rose;
+
+import java.util.Arrays;
 
 public class FlowerStore {
     private int purse;
@@ -14,7 +16,9 @@ public class FlowerStore {
     }
 
     private void addMoney(int countRose, int countTulip, int countChamomile) {
-        purse += Rose.PRICE * countRose + Chamomile.PRICE * countChamomile + Tulip.PRICE * countTulip;
+        purse += new Rose().getPrice() * countRose
+                + new Chamomile().getPrice() * countChamomile
+                + new Tulip().getPrice() * countTulip;
     }
 
     public Flower[] sell(int countRose, int countTulip, int countChamomile) {
@@ -51,12 +55,10 @@ public class FlowerStore {
     }
 
     public void showBouquet(Flower[] flowers) {
-        if (flowers.length == 0) {
-            System.out.println("Array is empty!");
-            return;
+        String[] names = new String[flowers.length];
+        for (int i = 0; i < flowers.length; i++) {
+            names[i] = flowers[i].name();
         }
-        for (Flower f : flowers) {
-            System.out.print(f.name() + " ");
-        }
+        System.out.println(Arrays.toString(names));
     }
 }

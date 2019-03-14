@@ -8,7 +8,7 @@ public class Chamomile extends Flower {
     }
 
     @Override
-    public String name() {
+    public String toString() {
         return "chamomile";
     }
 }

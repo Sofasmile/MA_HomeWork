@@ -21,7 +21,6 @@ public class FlowerStore {
         for (int i = 0; i < count; i++) {
             if (i < countRose) {
                 flowers[i] = new Rose();
-                ;
                 purse += flowers[i].getPrice();
             } else if (i < (countTulip + countRose)) {
                 flowers[i] = new Tulip();

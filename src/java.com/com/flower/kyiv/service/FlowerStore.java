@@ -15,39 +15,42 @@ public class FlowerStore {
         return purse;
     }
 
-    private void addMoney(int countRose, int countTulip, int countChamomile) {
-        purse += new Rose().getPrice() * countRose
-                + new Chamomile().getPrice() * countChamomile
-                + new Tulip().getPrice() * countTulip;
-    }
-
     public Flower[] sell(int countRose, int countTulip, int countChamomile) {
         int count = countRose + countTulip + countChamomile;
         flowers = new Flower[count];
         for (int i = 0; i < count; i++) {
-            flowers[i] = (i < countRose) ? new Rose()
-                    : (i < (countTulip + countRose)) ? new Tulip()
-                    : new Chamomile();
+            if (i < countRose) {
+                flowers[i] = new Rose();
+                ;
+                purse += flowers[i].getPrice();
+            } else if (i < (countTulip + countRose)) {
+                flowers[i] = new Tulip();
+                purse += flowers[i].getPrice();
+            } else {
+                flowers[i] = new Chamomile();
+                purse += flowers[i].getPrice();
+            }
         }
-        addMoney(countRose, countTulip, countChamomile);
         return flowers;
     }
 
     public Flower[] sellSequence(int countRose, int countTulip, int countChamomile) {
         int count = countRose + countTulip + countChamomile;
         flowers = new Flower[count];
-        addMoney(countRose, countTulip, countChamomile);
         for (int i = 0; i < count; ) {
             if (countRose > 0) {
-                flowers[i++] = new Rose();
+                flowers[i] = new Rose();
+                purse += flowers[i++].getPrice();
                 countRose--;
             }
             if (countTulip > 0) {
-                flowers[i++] = new Tulip();
+                flowers[i] = new Tulip();
+                purse += flowers[i++].getPrice();
                 countTulip--;
             }
             if (countChamomile > 0) {
-                flowers[i++] = new Chamomile();
+                flowers[i] = new Chamomile();
+                purse += flowers[i++].getPrice();
                 countChamomile--;
             }
         }

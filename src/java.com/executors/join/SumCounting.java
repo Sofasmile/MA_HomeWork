@@ -4,11 +4,11 @@ import java.util.concurrent.RecursiveTask;
 
 import static executors.join.ForkJoinPoolApplication.numberOfThread;
 
-public class CountingTask extends RecursiveTask<Long> {
+public class SumCounting extends RecursiveTask<Long> {
     private long from;
     private long to;
 
-    public CountingTask(long from, long to) {
+    public SumCounting(long from, long to) {
         this.from = from;
         this.to = to;
     }
@@ -23,9 +23,9 @@ public class CountingTask extends RecursiveTask<Long> {
             return result;
         } else {
             long middle = (to + from) / 2;
-            CountingTask first = new CountingTask(from, middle);
+            SumCounting first = new SumCounting(from, middle);
             first.fork();
-            CountingTask second = new CountingTask(middle + 1, to);
+            SumCounting second = new SumCounting(middle + 1, to);
             long secondValue = second.compute();
             return first.join() + secondValue;
         }

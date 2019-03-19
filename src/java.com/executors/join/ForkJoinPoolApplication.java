@@ -10,6 +10,6 @@ public class ForkJoinPoolApplication {
         ForkJoinPool forkJoinPool = new ForkJoinPool(numberOfThread);
 
         System.out.println("Count of therad: " + numberOfThread);
-        System.out.println(forkJoinPool.invoke(new CountingTask(0, count)));
+        System.out.println(forkJoinPool.invoke(new SumCounting(0, count)));
     }
 }
